@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Allowed Origins
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -39,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'authe',
+    'authe.apps.AutheConfig',
 ]
 
 MIDDLEWARE = [
@@ -74,11 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'movierecom.wsgi.application'
 
-# Allowed Origins
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -93,6 +94,8 @@ DATABASES = {
     }
 }
 
+# User model
+AUTH_USER_MODEL = 'authe.AppUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
